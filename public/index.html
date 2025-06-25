@@ -518,8 +518,18 @@
                 formMessage.className = "success";
                 notifyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
                 notifyButton.style.background = "linear-gradient(45deg, #0f0, #0ff)";
-                // ADDED: Clear the input on success
-                emailInput.value = "";
+
+                // Reset the form after 5 seconds
+                setTimeout(() => {
+                    formMessage.textContent = "";
+                    formMessage.className = "";
+                    emailInput.disabled = false;
+                    notifyButton.disabled = false;
+                    notifyButton.classList.remove('visible');
+                    notifyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+                    notifyButton.style.background = "linear-gradient(45deg, rgb(0, 255, 149), rgb(0, 17, 255))";
+                }, 5000);
+                
             } catch (error) {
                 formMessage.textContent = error.message;
                 formMessage.className = "error";
