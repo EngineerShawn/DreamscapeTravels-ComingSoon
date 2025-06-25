@@ -11,8 +11,8 @@
         :root {
             --bg-color: #0a0a0a;
             --text-color: #e0e0e0;
-            --primary-glow: #00f, #f0f, #0ff;
-            --secondary-glow: #ff0, #f0f, #0ff;
+            --primary-glow: rgb(25, 0, 255), rgb(255, 0, 255), rgb(0, 236, 253);
+            --secondary-glow: rgb(71, 68, 219), rgb(0, 255, 149), rgb(0, 17, 255);
         }
 
         *,
@@ -48,13 +48,13 @@
 
         h1 {
             font-family: "Orbitron", sans-serif;
-            font-size: clamp(2rem, 7vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: clamp(2rem, 7vw, 3.0rem);
+            font-weight: 400;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: #fff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
-                0 0 20px rgba(255, 0, 255, 0.3);
+                0 0 20px rgba(0, 204, 255, 0.274);
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -67,6 +67,17 @@
             -webkit-text-fill-color: transparent;
             animation: gradient-move 8s ease infinite;
             background-size: 400% 400%;
+            /* font-family: sans-serif; */
+        }
+
+        .chroma-text-span {
+            background: linear-gradient(90deg, var(--primary-glow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-move 8s ease infinite;
+            background-size: 400% 400%;
+            /* font-family: sans-serif; */
         }
 
         @keyframes gradient-move {
@@ -84,10 +95,10 @@
         }
 
         p.subtitle {
-            font-size: 1.25rem;
+            font-size: 1.30rem;
             font-weight: 300;
             max-width: 600px;
-            line-height: 1.6;
+            line-height: 1.5;
             opacity: 0.8;
         }
 
@@ -162,9 +173,9 @@
             height: 200%;
             background: conic-gradient(from var(--angle),
                     transparent 25%,
-                    var(--primary-glow),
+                    var(--primary-glow, --secondary-glow),
                     transparent 75%);
-            animation: spin 6s linear infinite;
+            animation: spin 5s linear infinite;
             transform-origin: center center;
             transform: translate(-50%, -50%);
         }
@@ -214,7 +225,7 @@
             height: 40px;
             border: none;
             border-radius: 50%;
-            background: linear-gradient(45deg, #f0f, #0ff);
+            background: linear-gradient(45deg, rgb(0, 255, 149), rgb(0, 17, 255));
             color: #fff;
             cursor: pointer;
             display: flex;
@@ -273,9 +284,11 @@
     <div class="container">
         <h1>Dreamscape <span class="chroma-text">Travels</span></h1>
         <p class="subtitle">
-            Your personal portal to the world's wonders is arriving soon. We are
-            crafting a seamless experience for you to book your next unforgettable
-            journey.
+            Get ready to explore! We're currently putting the
+            finishing touches on the official
+            Dreamscape Travels website—your
+            personal portal to the world's wonders and the key to your next
+            unforgettable journey.
         </p>
 
         <div id="countdown">
@@ -327,7 +340,7 @@
             seconds: countdownElements.seconds.parentElement,
         };
 
-        const launchDate = new Date("August 1, 2025 00:00:00").getTime();
+        const launchDate = new Date("June 27, 2025 08:00:00").getTime();
         let lastValues = {};
 
         const timer = setInterval(() => {
